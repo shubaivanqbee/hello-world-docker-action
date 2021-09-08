@@ -5,6 +5,18 @@ inputs:
   token:
     description: 'jwt token'
     required: true
+  filename:
+    description: 'tarname'
+    required: true
+    default: 'node-red-files.tar'
+  qbee_directory:
+    description: 'dirname'
+    required: true
+    default: 'qbee_github_action_test'
+  local_directory:
+    description: 'this directory contains path to the file which should be upload'
+    required: true
+    default: 'tar'
 outputs:
   token:
     description: 'jwt token'
@@ -13,3 +25,6 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.token }}
+    - ${{ inputs.filename }}
+    - ${{ inputs.qbee_directory }}
+    - ${{ inputs.local_directory }}
