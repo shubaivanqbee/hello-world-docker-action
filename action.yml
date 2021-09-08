@@ -1,16 +1,15 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'download file'
+description: 'download file to qbee file manager'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  token:
+    description: 'jwt token'
     required: true
-    default: 'World'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  token:
+    description: 'jwt token'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.token }}

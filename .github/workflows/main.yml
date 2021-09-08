@@ -34,15 +34,15 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  hello_world_job:
+  download_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to downalod file
     steps:
-      - name: Hello world action step
-        id: hello
+      - name: download step
+        id: download_job
         uses: shubaivanqbee/hello-world-docker-action@v1
         with:
-          who-to-greet: 'Mona the Octocat'
+          token: 'test'
       # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"          
+      - name: show token
+        run: echo "The token was ${{ steps.download_job.outputs.token }}"
