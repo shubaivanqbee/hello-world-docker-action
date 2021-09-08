@@ -12,7 +12,7 @@ apiOutput=$(curl -i --request "DELETE" -d "path=/$qbee_directory/$filename" -H "
    --header 'Authorization: Bearer '"$1")
 echo "API output is:\n$apiOutput"
 
-apiOutput=$(curl -i --request POST -H "Content-Type:multipart/form-data" -F "path=/$qbee_directory/" -F "file=@./$local_directory/$filename" \
+apiOutput=$(curl -i --request POST -H "Content-Type:multipart/form-data" -F "path=/$qbee_directory/" -F "file=@$local_directory$filename" \
    --url 'https://www.app.qbee.io:9443/api/v2/file'\
    --header 'Authorization: Bearer '"$1")
 echo "API output is:\n$apiOutput"
