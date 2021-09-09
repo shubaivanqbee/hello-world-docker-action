@@ -31,25 +31,26 @@ fi
 
 echo "API output is:\n$apiOutput"
 
-apiOutput=$(curl --request POST -sL -H "Content-Type:multipart/form-data" -F "path=/$qbee_directory/" -F "file=@$local_directory$filename" \
+apiPostOutput=$(curl --request POST -sL -H "Content-Type:multipart/form-data" -F "path=/$qbee_directory/" -F "file=@$local_directory$filename" \
    --url 'https://www.app.qbee.io:9443/api/v2/file'\
    --header 'Authorization: Bearer '"$token"\
    -w "\n{\"http_code\":%{http_code}}\n")
 
 echo 'POST request'
-http_code=$(echo $output | jq -cs | jq -r '.[1].http_code')
-echo $http_code
+echo $apiPostOutput
+post_http_code=$(echo $apiPostOutput | jq -cs | jq -r '.[1].http_code')
+echo $post_http_code
 
-if [ "$http_code" != "$successful_status_code" ]
+if [ "$post_http_code" != "$successful_status_code" ]
 
 then
-    echo "http_code was - $http_code"
+    echo "http_code was - $post_http_code"
     exit 1
 :
 else
-    echo "http_code was - $http_code"
+    echo "http_code was - $post_http_code"
 fi
 
-echo "API output is:\n$apiOutput"
+echo "API Post output is:\n$apiPostOutput"
 
 echo "::set-output name=token::$token"
