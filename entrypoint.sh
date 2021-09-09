@@ -25,6 +25,8 @@ echo $http_code
 if [ "$http_code" == "null" ]; then
     http_code=$(echo $apiOutput | jq -cs | jq -r '.[0].http_code')
 else
+    echo "http_code was no null"
+fi
 
 if [[ "$http_code" != "$successful_status_code" && "$http_code" != "400" && "$http_code" != "204" ]]; then
     echo "http_code was - $http_code"
