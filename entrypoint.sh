@@ -1,5 +1,8 @@
 #!/bin/bash -l
 
+
+echo $SHELL
+
 token=$1
 filename=$2
 qbee_directory=$3
