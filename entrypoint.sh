@@ -17,7 +17,7 @@ echo 'DELETE request'
 http_code=$(echo $output | jq -cs | jq -r '.[1].http_code')
 echo $http_code
 tokenValue=$(echo $output | jq -cs | jq -r '.[0].token')
-echo $tokenValue)
+echo $tokenValue
 
 if [ "$http_code" != "$successful_status_code" ]
 
@@ -40,7 +40,7 @@ echo 'POST request'
 http_code=$(echo $output | jq -cs | jq -r '.[1].http_code')
 echo $http_code
 tokenValue=$(echo $output | jq -cs | jq -r '.[0].token')
-echo $tokenValue)
+echo $tokenValue
 
 if [ "$http_code" != "$successful_status_code" ]
 
