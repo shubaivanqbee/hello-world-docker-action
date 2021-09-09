@@ -8,7 +8,7 @@ successful_status_code='200'
 
 echo "init token $token filename $filename qbee_directory $qbee_directory and local_directory $local_directory"
 
-apiOutput=$(curl -i --request "DELETE" -d "path=/$qbee_directory/$filename" -H "Content-type: application/x-www-form-urlencoded" \
+apiOutput=$(curl -i --request "DELETE" -sL -d "path=/$qbee_directory/$filename" -H "Content-type: application/x-www-form-urlencoded" \
    --url 'https://www.app.qbee.io:9443/api/v2/file'\
    --header 'Authorization: Bearer '"$1"\
    -w "\n{\"http_code\":%{http_code}}\n")
