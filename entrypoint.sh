@@ -14,10 +14,8 @@ apiOutput=$(curl -i --request "DELETE" -d "path=/$qbee_directory/$filename" -H "
    -w "\n{\"http_code\":%{http_code}}\n")
 
 echo 'DELETE request'
-http_code=$(echo $output | jq -cs | jq -r '.[1].http_code')
+http_code=$(echo $apiOutput | jq -cs | jq -r '.[1].http_code')
 echo $http_code
-tokenValue=$(echo $output | jq -cs | jq -r '.[0].token')
-echo $tokenValue
 
 if [ "$http_code" != "$successful_status_code" ]
 
@@ -39,8 +37,6 @@ apiOutput=$(curl -i --request POST -H "Content-Type:multipart/form-data" -F "pat
 echo 'POST request'
 http_code=$(echo $output | jq -cs | jq -r '.[1].http_code')
 echo $http_code
-tokenValue=$(echo $output | jq -cs | jq -r '.[0].token')
-echo $tokenValue
 
 if [ "$http_code" != "$successful_status_code" ]
 
