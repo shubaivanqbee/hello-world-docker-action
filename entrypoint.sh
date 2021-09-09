@@ -10,7 +10,7 @@ echo "init token $token filename $filename qbee_directory $qbee_directory and lo
 
 apiOutput=$(curl -i --request "DELETE" -d "path=/$qbee_directory/$filename" -H "Content-type: application/x-www-form-urlencoded" \
    --url 'https://www.app.qbee.io:9443/api/v2/file'\
-   --header 'Authorization: Bearer '"$1"
+   --header 'Authorization: Bearer '"$1"\
    -w "\n{\"http_code\":%{http_code}}\n")
 
 echo 'DELETE request'
@@ -33,7 +33,7 @@ echo "API output is:\n$apiOutput"
 
 apiOutput=$(curl -i --request POST -H "Content-Type:multipart/form-data" -F "path=/$qbee_directory/" -F "file=@$local_directory$filename" \
    --url 'https://www.app.qbee.io:9443/api/v2/file'\
-   --header 'Authorization: Bearer '"$1"
+   --header 'Authorization: Bearer '"$1"\
    -w "\n{\"http_code\":%{http_code}}\n")
 
 echo 'POST request'
