@@ -17,7 +17,7 @@ apiOutput=$(curl --request "DELETE" -sL -d "path=/$qbee_directory/$filename" -H 
    --url 'https://www.app.qbee.io:9443/api/v2/file'\
    --header 'Authorization: Bearer '"$token"\
    -w "\n{\"http_code\":%{http_code}}\n")
-
+echo $apiOutput
 echo 'DELETE request'
 http_code=$(echo $apiOutput | jq -cs | jq -r '.[1].http_code')
 echo $http_code
