@@ -3,6 +3,8 @@
 
 echo $SHELL
 
+bash --version
+
 token=$1
 filename=$2
 qbee_directory=$3
