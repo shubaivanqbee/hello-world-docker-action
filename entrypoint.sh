@@ -22,7 +22,11 @@ echo 'DELETE request'
 http_code=$(echo $apiOutput | jq -cs | jq -r '.[1].http_code')
 echo $http_code
 
-if [[ "$http_code" != "$successful_status_code" && "$http_code" != "400" ]]; then
+if [ "$http_code" == "null" ]; then
+    http_code=$(echo $apiOutput | jq -cs | jq -r '.[0].http_code')
+else
+
+if [[ "$http_code" != "$successful_status_code" && "$http_code" != "400" && "$http_code" != "204" ]]; then
     echo "http_code was - $http_code"
     exit 1
 else
