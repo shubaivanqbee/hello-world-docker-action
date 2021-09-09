@@ -15,7 +15,7 @@ apiOutput=$(curl -i --request "DELETE" -d "path=/$qbee_directory/$filename" -H "
 
 echo $apiOutput
 echo 'DELETE request '
-http_code=$(echo $apiOutput | jq -cs | jq -r '.[1].http_code')
+http_code=$(echo "$apiOutput" | jq -cs | jq -r '.[1].http_code')
 echo $http_code
 
 if [ "$http_code" != "$successful_status_code" ]
