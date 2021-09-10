@@ -1,25 +1,21 @@
 # action.yml
-name: 'download file'
-description: 'download file to qbee file manager'
+name: 'update qbee file manager'
+description: 'delete old file and upload new file into the qbee file manager'
 inputs:
   token:
     description: 'jwt token'
     required: true
   filename:
-    description: 'tarname'
+    description: 'filename without path'
     required: true
-    default: 'node-red-files.tar'
   qbee_directory:
-    description: 'dirname'
+    description: 'path to directory in the qbee file manager where the file should be uploaded'
     required: true
     default: 'qbee_github_action_test'
   local_directory:
-    description: 'this directory contains path to the file which should be upload'
-    required: true
-    default: 'tar'
-outputs:
-  token:
-    description: 'jwt token'
+    description: 'path to the local (GitHub) directory in which the file is located - default: ./'
+    required: false
+    default: './'
 runs:
   using: 'docker'
   image: 'Dockerfile'
